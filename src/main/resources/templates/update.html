@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atualizar</title>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}" />
+<style type="text/css">
+a {
+    color: black;
+    text-decoration: none;
+    background-color: transparent;
+}
+</style>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif; margin: 0;">
+	<nav class="navbar navbar-expand-lg navbar navbar-light"
+		style="background-color: #6959CD;">
+		<span class="navbar-brand mb-0 h1">Menu</span> <a class="nav-link"
+			th:href="@{/home}">Home <span class="sr-only">(current)</span></a> <a
+			class="nav-link" th:href="@{/inventario}">Inventário</a> <a
+			class="nav-link" th:href="@{/tombamento}">Tombamento</a> <a
+			class="nav-link" th:href="@{/sobre}">Sobre</a>
+	</nav>
+	<div
+		style="background-color: #6959CD; background-image: linear-gradient(#6959CD, #FFF); width: 100%">
+
+		<form th:action="@{/update}" method="post" th:object="${order}">
+			<div align="center" >
+				<div class="form-group">
+					<label for="colFormLabel" class="col-sm-2 col-form-label">Codigo de tombamento</label>
+					<div class="col-8">
+						<input type="text" class="form-control" id="colFormLabel"
+							placeholder="Codigo de tombamento..." th:field="*{codigoTombamento}"
+							readonly="readonly" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="colFormLabel" class="col-sm-2 col-form-label">Data de tombamento</label>
+					<div class="col-8">
+						<input type="text" class="form-control" id="colFormLabel"
+							placeholder="Data de tombamento..." th:field="*{dataTombamento}"
+							readonly="readonly" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="colFormLabel" class="col-sm-2 col-form-label">Cliente</label>
+					<div class="col-8">
+						<input type="text" class="form-control" id="colFormLabel"
+							placeholder="Nome do cliente ou empresa..." th:field="*{cliente}"
+							required minlength="3" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="colFormLabel" class="col-sm-2 col-form-label">Cep</label>
+					<div class="col-8">
+						<input type="text" class="form-control" id="colFormLabel"
+							placeholder="Cep do cliente ou empresa... ex:(88888-888)"
+							th:field="*{cep}" required pattern="\d{5}-\d{3}" maxlength="9" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="colFormLabel" class="col-sm-2 col-form-label">Tipo
+						do produto</label>
+					<div class="col-8">
+						<input type="text" class="form-control" id="colFormLabel"
+							placeholder="Tipo do produto ex:(Notebook, Placa Mãe...)"
+							th:field="*{tipo}" required minlength="3" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="colFormLabel" class="col-sm-2 col-form-label">Marca
+						do produto</label>
+					<div class="col-8">
+						<input type="text" class="form-control" id="colFormLabel"
+							placeholder="Marca do produto..." th:field="*{marca}" required
+							minlength="3" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="colFormLabel" class="col-sm-2 col-form-label">Modelo
+						do produto</label>
+					<div class="col-8">
+						<input type="text" class="form-control" id="colFormLabel"
+							placeholder="Modelo do produto..." th:field="*{modelo}" required
+							minlength="3" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="colFormLabel" class="col-sm-2 col-form-label">Quantidade</label>
+					<div class="col-8">
+						<input type="number" class="form-control" id="colFormLabel"
+							placeholder="Quantidade..." min="1" value=""
+							oninput="validity.valid||(value='');" th:field="*{quantidade}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="exampleFormControlTextarea1"
+						class="col-sm-2 col-form-label">Nota</label>
+					<div class="col-8">
+						<textarea class="form-control" id="exampleFormControlTextarea1"
+							rows="3" placeholder="Observações..." th:field="*{nota}" required
+							minlength="3"></textarea>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Atualizar</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
